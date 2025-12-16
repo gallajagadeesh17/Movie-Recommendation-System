@@ -1,0 +1,20 @@
+from flask import Flask, render_template, request
+from model import recommend
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def home():
+    movies = []
+
+    if request.method == "POST":
+        mood = request.form["mood"]
+        country = request.form["country"]
+        language = request.form["language"]
+
+        movies = recommend(mood, country, language)
+
+    return render_template("index.html", movies=movies)
+
+if __name__ == "__main__":
+    app.run(debug=True)

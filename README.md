@@ -1,4 +1,4 @@
-<img width="1917" height="985" alt="interface" src="https://github.com/user-attachments/assets/f15f4747-abc0-4ab2-928a-3479f9db1007" /># 🎬 Mood-Based Movie Recommendation System
+# 🎬 Mood-Based Movie Recommendation System
 
 A web-based movie recommendation system that suggests movies based on **user mood, country, and language preferences**.  
 This project is developed as a **college mini project** using Python and Flask.
@@ -59,10 +59,12 @@ The user selects their mood, country, and language using a simple and interactiv
 
 2️⃣ System Processes the Request
 The Flask backend receives the user’s input and filters the movie dataset using predefined conditions.
+
 <img width="1915" height="979" alt="data enter" src="https://github.com/user-attachments/assets/d2eb0821-fadf-4e6e-bf10-686f18b3ca02" />
 
 3️⃣ Movies Are Recommended
 Based on the selected options, the system displays a list of matching movies to the user.
+
 <img width="1909" height="981" alt="result" src="https://github.com/user-attachments/assets/35e389ee-0906-428d-9c95-1b82ff3c8108" />
 
 ---
@@ -93,6 +95,7 @@ B.Tech CSE (AI)
 ## 📄 License
 
 This project is intended for educational use only.
+
 
 
 

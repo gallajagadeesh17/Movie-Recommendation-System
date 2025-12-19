@@ -78,11 +78,6 @@ B.Tech CSE (AI)
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
-
-You are free to use, modify, and distribute this software for personal and educational purposes.  
-The software is provided **"as is"**, without warranty of any kind.
-
-© 2025 Galla Jagadeesh
+This project is intended for educational use only.
 
 

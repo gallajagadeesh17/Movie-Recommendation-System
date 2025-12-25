@@ -6,15 +6,21 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def home():
     movies = []
+    selected_mood = None
 
     if request.method == "POST":
-        mood = request.form.get("mood")
+        selected_mood = request.form.get("mood")
         country = request.form.get("country")
         language = request.form.get("language")
 
-        movies = recommend(mood, country, language)
+        movies = recommend(selected_mood, country, language)
 
-    return render_template("index.html", movies=movies)
+    return render_template(
+        "index.html",
+        movies=movies,
+        selected_mood=selected_mood
+    )
 
+# ✅ THIS MUST BE OUTSIDE THE FUNCTION
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

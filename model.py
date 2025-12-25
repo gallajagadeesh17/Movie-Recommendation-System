@@ -11,15 +11,21 @@ csv_path = os.path.join(BASE_DIR, "movies.csv")
 df = pd.read_csv(csv_path)
 
 def recommend(mood, country, language):
-    filtered = df.copy()
+    try:
+        filtered = df.copy()
 
-    if mood:
-        filtered = filtered[filtered.iloc[:, 1] == mood]
+        if mood:
+            filtered = filtered[filtered.iloc[:, 1] == mood]
 
-    if country:
-        filtered = filtered[filtered.iloc[:, 2] == country]
+        if country:
+            filtered = filtered[filtered.iloc[:, 2] == country]
 
-    if language:
-        filtered = filtered[filtered.iloc[:, 3] == language]
+        if language:
+            filtered = filtered[filtered.iloc[:, 3] == language]
 
-    return filtered.to_dict(orient="records")
+        return filtered.to_dict(orient="records")
+
+    except Exception as e:
+        print("ERROR in recommend():", e)
+        return []
+

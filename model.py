@@ -14,20 +14,8 @@ def recommend(mood, country, language):
     results = []
 
     for _, row in df.iterrows():
-        movie_title = str(row.iloc[0]).strip()
-        movie_mood = str(row.iloc[1]).strip().lower()
-        movie_country = str(row.iloc[2]).strip().lower()
-        movie_language = str(row.iloc[3]).strip().lower()
-
-        if mood and movie_mood != mood.lower():
-            continue
-        if country and movie_country != country.lower():
-            continue
-        if language and movie_language != language.lower():
-            continue
-
         results.append({
-            "title": movie_title
+            "title": str(row.iloc[0])
         })
 
     return results

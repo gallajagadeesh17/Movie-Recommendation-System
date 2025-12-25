@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Mood Based Movie Recommendation</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <div class="glass-card">
-    <h1>🎭 MoodFlix🎥</h1>
+    <h1>🎭MoodFlix🎥</h1>
     <p class="subtitle">Movies that match your mood</p>
 
    <form method="POST">
@@ -43,21 +43,43 @@
     <button type="submit">Recommend Movies</button>
 </form>
 
-    {% if movies %}
-        <h2>🎬 Recommended for You</h2>
-        <ul class="movie-list">
-            {% for movie in movies %}
-                <li>{{ movie }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-</div>
-{% if movies %}
-   <!-- show list -->
+{% if movies and movies|length > 0 %}
+  <h2>🎬 Recommended for You</h2>
+
+  <ul class="movie-list">
+    {% for movie in movies %}
+      <li>
+        <a
+          href="https://www.google.com/search?q={{ movie['Title'] }}+movie+watch+online"
+          target="_blank"
+          class="movie-link"
+        >
+          {{ movie['Title'] }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 {% else %}
-   <p class="note">No movies found for selected options</p>
+  <p>No movies found. Try a different mood.</p>
 {% endif %}
 
+</div>
+
+{% if selected_mood %}
+<div class="mood-indicator">
+    {% if selected_mood == "happy" %}
+        😄 <span>Happy Mood</span>
+    {% elif selected_mood == "sad" %}
+        😢 <span>Sad Mood</span>
+    {% elif selected_mood == "angry" %}
+        🔥 <span>Angry Mood</span>
+    {% elif selected_mood == "romantic" %}
+        ❤️ <span>Romantic Mood</span>
+    {% elif selected_mood == "excited" %}
+        🤩 <span>Excited Mood</span>
+    {% endif %}
+</div>
+{% endif %}
 
 <footer>
     <p>© 2025 MoodFlix | Built by Galla Jagadeesh</p>
@@ -65,5 +87,3 @@
 
 </body>
 </html>
-
-

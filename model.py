@@ -1,16 +1,25 @@
+import os
 import pandas as pd
 
-# Load dataset
-movies = pd.read_csv("dataset/movies.csv", encoding="latin1")
+# Absolute path of this file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Fix hidden BOM characters from Excel
-movies.columns = movies.columns.str.replace('ï»¿', '').str.strip()
+# Correct CSV path (NO dataset folder)
+csv_path = os.path.join(BASE_DIR, "movies.csv")
+
+# Load CSV safely
+df = pd.read_csv(csv_path)
 
 def recommend(mood, country, language):
-    result = movies[
-        (movies['mood'] == mood) &
-        (movies['country'] == country) &
-        (movies['language'] == language)
-    ]
+    filtered = df.copy()
 
-    return result['title'].tolist()
+    if mood:
+        filtered = filtered[filtered.iloc[:, 1] == mood]
+
+    if country:
+        filtered = filtered[filtered.iloc[:, 2] == country]
+
+    if language:
+        filtered = filtered[filtered.iloc[:, 3] == language]
+
+    return filtered.to_dict(orient="records")

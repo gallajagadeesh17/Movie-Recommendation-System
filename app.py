@@ -1,20 +1,23 @@
-from flask import Flask, render_template, request
-from model import recommend
+import streamlit as st
+import pandas as pd
 
-app = Flask(__name__)
+df = pd.read_csv("movies.csv")
 
-@app.route("/", methods=["GET", "POST"])
-def home():
-    movies = []
+st.title("🎬 Movie Recommendation System")
 
-    if request.method == "POST":
-        mood = request.form["mood"]
-        country = request.form["country"]
-        language = request.form["language"]
+mood = st.selectbox("Select Mood", sorted(df["mood"].unique()))
+country = st.selectbox("Select Country", sorted(df["country"].unique()))
+language = st.selectbox("Select Language", sorted(df["language"].unique()))
 
-        movies = recommend(mood, country, language)
+if st.button("Recommend"):
+    result = df[
+        (df["mood"] == mood) &
+        (df["country"] == country) &
+        (df["language"] == language)
+    ]
 
-    return render_template("index.html", movies=movies)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    if result.empty:
+        st.warning("No movies found")
+    else:
+        for movie in result["title"]:
+            st.success(movie)

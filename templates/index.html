@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mood Based Movie Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="glass-card">
+    <h1>🎭MoodFlix🎥</h1>
+    <p class="subtitle">Movies that match your mood</p>
+
+   <form method="POST">
+    <select name="mood" required>
+        <option value="">Select Mood</option>
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="angry">Angry</option>
+        <option value="romantic">Romantic</option>
+        <option value="excited">Excited</option>
+    </select>
+
+    <select name="country" required>
+        <option value="">Select Country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="Japan">Japan</option>
+        <option value="South Korea">South Korea</option>
+    </select>
+
+    <select name="language" required>
+        <option value="">Select Language</option>
+        <option value="Telugu">Telugu</option>
+        <option value="Hindi">Hindi</option>
+        <option value="English">English</option>
+        <option value="Kannada">Kannada</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Korean">Korean</option>
+    </select>
+
+    <button type="submit">Recommend Movies</button>
+</form>
+
+{% if movies and movies|length > 0 %}
+  <h2>🎬 Recommended for You</h2>
+
+  <ul class="movie-list">
+    {% for movie in movies %}
+      <li>
+        <a
+          href="https://www.google.com/search?q={{ movie['Title'] }}+movie+watch+online"
+          target="_blank"
+          class="movie-link"
+        >
+          {{ movie['Title'] }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No movies found. Try a different mood.</p>
+{% endif %}
+
+</div>
+
+{% if selected_mood %}
+<div class="mood-indicator">
+    {% if selected_mood == "happy" %}
+        😄 <span>Happy Mood</span>
+    {% elif selected_mood == "sad" %}
+        😢 <span>Sad Mood</span>
+    {% elif selected_mood == "angry" %}
+        🔥 <span>Angry Mood</span>
+    {% elif selected_mood == "romantic" %}
+        ❤️ <span>Romantic Mood</span>
+    {% elif selected_mood == "excited" %}
+        🤩 <span>Excited Mood</span>
+    {% endif %}
+</div>
+{% endif %}
+
+<footer>
+    <p>© 2025 MoodFlix | Built by Galla Jagadeesh</p>
+</footer>
+
+</body>
+</html>

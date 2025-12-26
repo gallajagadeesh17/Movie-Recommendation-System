@@ -1,24 +1,22 @@
 import os
 import pandas as pd
 
-# Absolute path of this file
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CSV_PATH = os.path.join(BASE_DIR, "movies.csv")
 
-# Correct CSV path (NO dataset folder)
-csv_path = os.path.join(BASE_DIR, "movies.csv")
-
-# Load CSV safely
-df = pd.read_csv(csv_path)
+df = pd.read_csv(CSV_PATH)
 
 def recommend(mood, country, language):
-    results = []
+    filtered = df[
+        (df["mood"] == mood) &
+        (df["country"] == country) &
+        (df["language"] == language)
+    ]
 
-    for _, row in df.iterrows():
+    results = []
+    for _, row in filtered.iterrows():
         results.append({
-            "title": str(row.iloc[0])
+            "title": row["title"]
         })
 
     return results
-
-
-

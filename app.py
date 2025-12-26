@@ -4,23 +4,22 @@ from model import recommend
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
-def home():
+def index():
     movies = []
-    selected_mood = None
+    mood = None
 
     if request.method == "POST":
-        selected_mood = request.form.get("mood")
+        mood = request.form.get("mood")
         country = request.form.get("country")
         language = request.form.get("language")
 
-        movies = recommend(selected_mood, country, language)
+        movies = recommend(mood, country, language)
 
     return render_template(
         "index.html",
         movies=movies,
-        selected_mood=selected_mood
+        selected_mood=mood
     )
 
-# ✅ THIS MUST BE OUTSIDE THE FUNCTION
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

@@ -50,11 +50,11 @@
     {% for movie in movies %}
       <li>
         <a
-          href="https://www.google.com/search?q={{ movie['Title'] }}+movie+watch+online"
+          href="https://www.google.com/search?q={{ movie['title'] }}+movie+watch+online"
           target="_blank"
           class="movie-link"
         >
-          {{ movie['Title'] }}
+          {{ movie['title'] }}
         </a>
       </li>
     {% endfor %}

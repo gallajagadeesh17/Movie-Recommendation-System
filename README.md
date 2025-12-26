@@ -55,17 +55,20 @@ http://127.0.0.1:5000
 1️⃣ User Selects Preferences
 The user selects their mood, country, and language using a simple and interactive web interface.
 
-<img width="1917" height="985" alt="interface" src="https://github.com/user-attachments/assets/506b65c3-93b4-444b-8cc0-8394d4a0aaff" />
+
+<img width="1914" height="979" alt="user-interface" src="https://github.com/user-attachments/assets/921815ba-8b25-4339-ae55-5d7205944c52" />
 
 2️⃣ System Processes the Request
 The Flask backend receives the user’s input and filters the movie dataset using predefined conditions.
 
-<img width="1915" height="979" alt="data enter" src="https://github.com/user-attachments/assets/d2eb0821-fadf-4e6e-bf10-686f18b3ca02" />
+
+<img width="1914" height="976" alt="input" src="https://github.com/user-attachments/assets/079b3fe3-fb19-47f2-8fb3-6ecbfee53371" />
 
 3️⃣ Movies Are Recommended
 Based on the selected options, the system displays a list of matching movies to the user.
 
-<img width="1909" height="981" alt="result" src="https://github.com/user-attachments/assets/35e389ee-0906-428d-9c95-1b82ff3c8108" />
+
+<img width="1911" height="981" alt="result" src="https://github.com/user-attachments/assets/d5c53155-8384-4312-9239-85ffd087887e" />
 
 ---
 
@@ -95,6 +98,7 @@ B.Tech CSE (AI)
 ## 📄 License
 
 This project is intended for educational use only.
+
 
 
 
